@@ -42,6 +42,7 @@ class StartState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset("assets/pokemon_logo.png"),
+            const Text("Loading", style: TextStyle(color: Colors.black, fontSize: 18)),
             SleekCircularSlider(
               min: 0,
               max: 100,
@@ -50,7 +51,7 @@ class StartState extends State<SplashScreen> {
                 infoProperties: InfoProperties(
                     mainLabelStyle: const TextStyle(
                       color: Colors.grey,
-                      fontSize: 25,
+                      fontSize: 20,
                     )
                 ),
                 customColors: CustomSliderColors(

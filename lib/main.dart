@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/pokemon_list.dart';
 import 'splash_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,6 +15,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
@@ -23,8 +26,6 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('My Home Page')),
-    );
+    return const PokemonList();
   }
 }
