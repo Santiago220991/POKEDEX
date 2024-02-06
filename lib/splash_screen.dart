@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'package:pokedex/providers/pokemon_data.dart';
+import 'package:provider/provider.dart';
+
 import 'main.dart';
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
@@ -19,10 +22,11 @@ class StartState extends State<SplashScreen> {
   void initState() {
     super.initState();
     startTimer();
+    Provider.of<PokemonData>(context, listen: false).getFirstPokemons();
   }
 
   startTimer() async {
-    var duration = const Duration(seconds: 10);
+    var duration = const Duration(seconds: 7);
     return Timer(duration, route);
   }
 
@@ -35,14 +39,13 @@ class StartState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         constraints: const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
-          color: Colors.white
-        ),
+        decoration: const BoxDecoration(color: Colors.white),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset("assets/pokemon_logo.png"),
-            const Text("Loading", style: TextStyle(color: Colors.black, fontSize: 18)),
+            const Text("Loading",
+                style: TextStyle(color: Colors.black, fontSize: 18)),
             SleekCircularSlider(
               min: 0,
               max: 100,
@@ -50,17 +53,16 @@ class StartState extends State<SplashScreen> {
               appearance: CircularSliderAppearance(
                 infoProperties: InfoProperties(
                     mainLabelStyle: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 20,
-                    )
-                ),
+                  color: Colors.grey,
+                  fontSize: 20,
+                )),
                 customColors: CustomSliderColors(
                     dotColor: Colors.white,
                     progressBarColor: Colors.black,
                     shadowColor: Colors.white,
                     trackColor: Colors.white),
-                spinnerDuration: 7,
-                animDurationMultiplier: 7,
+                spinnerDuration: 5,
+                animDurationMultiplier: 5,
                 animationEnabled: true,
                 startAngle: 0.0,
                 angleRange: 360,
