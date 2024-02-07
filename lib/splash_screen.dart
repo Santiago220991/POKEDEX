@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:pokedex/providers/pokemon_data.dart';
+import 'package:pokedex/views/pokemon_list.dart';
 import 'package:provider/provider.dart';
 
-import 'main.dart';
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
@@ -32,7 +32,7 @@ class StartState extends State<SplashScreen> {
 
   route() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const HomePage()));
+        context, MaterialPageRoute(builder: (context) => const PokemonList()));
   }
 
   initScreen(BuildContext context) {

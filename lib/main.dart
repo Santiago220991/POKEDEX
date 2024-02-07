@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/providers/pokemon_data.dart';
+import 'package:pokedex/views/pokemon_info.dart';
 import 'package:pokedex/views/pokemon_list.dart';
 import 'package:provider/provider.dart';
 import 'splash_screen.dart';
@@ -12,22 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
         create: (context) => PokemonData(),
-        child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+        child: MaterialApp(
+          initialRoute: "/splashScreen",
+          routes: {
+            "/splashScreen": (context) => const SplashScreen(),
+            "/home": (context) => const PokemonList(),
+            "/info": (context) => const PokemonInfo(),
+          },
         ));
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-  @override
-  HomePageState createState() => HomePageState();
-}
-
-class HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const PokemonList();
   }
 }
