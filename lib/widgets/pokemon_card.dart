@@ -12,19 +12,23 @@ class PokemonCard extends StatelessWidget {
       child: Card(
         margin: const EdgeInsets.all(8),
         child: ListTile(
-          leading: Image.network(
-            pokemon.sprites.frontDefault,
-            scale: 1.5,
-          ),
-          title: Text(
-            capitalize(pokemon.name),
-            style: const TextStyle(fontSize: 40),
-          ),
-          subtitle: Text(
-            capitalize(pokemon.types[0]),
-            style: const TextStyle(fontSize: 20),
-          ),
-        ),
+            leading: Image.network(
+              pokemon.sprites.frontDefault,
+              scale: 1.5,
+            ),
+            title: Text(
+              capitalize(pokemon.name),
+              style: const TextStyle(fontSize: 40),
+            ),
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: pokemon.types
+                  .map((type) => SizedBox(
+                      width: 100,
+                      child: Text(capitalize(type.type.name),
+                          style: const TextStyle(fontSize: 15))))
+                  .toList(),
+            )),
       ),
       onTap: () {
         Navigator.pushNamed(context, "/info", arguments: pokemon);

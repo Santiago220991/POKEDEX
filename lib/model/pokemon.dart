@@ -1,7 +1,7 @@
 class Pokemon {
   int id;
   String name;
-  List<String> types;
+  List<TypeElement> types;
   Sprites sprites;
   int weight;
   List<StatElement> stats;
@@ -18,8 +18,8 @@ class Pokemon {
   factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
         id: json['id'],
         name: json['name'],
-        types: List<String>.from(
-            json['types'].map((type) => type['type']['name'] as String)),
+        types: List<TypeElement>.from(
+            json["types"].map((x) => TypeElement.fromJson(x))),
         sprites: Sprites.fromMap(json["sprites"]),
         weight: json['weight'],
         stats: List<StatElement>.from(
@@ -56,5 +56,45 @@ class StatElement {
   Map<String, dynamic> toJson() => {
         "base_stat": baseStat,
         "effort": effort,
+      };
+}
+
+class TypeElement {
+  int slot;
+  TypeType type;
+
+  TypeElement({
+    required this.slot,
+    required this.type,
+  });
+
+  factory TypeElement.fromJson(Map<String, dynamic> json) => TypeElement(
+        slot: json["slot"],
+        type: TypeType.fromJson(json["type"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "slot": slot,
+        "type": type.toJson(),
+      };
+}
+
+class TypeType {
+  String name;
+  String url;
+
+  TypeType({
+    required this.name,
+    required this.url,
+  });
+
+  factory TypeType.fromJson(Map<String, dynamic> json) => TypeType(
+        name: json["name"],
+        url: json["url"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "url": url,
       };
 }

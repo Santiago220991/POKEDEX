@@ -3,6 +3,7 @@ import 'package:pokedex/model/pokemon.dart';
 import 'package:pokedex/widgets/pokemon_info_details.dart';
 import 'package:pokedex/widgets/pokemon_info_header.dart';
 import 'package:pokedex/widgets/pokemon_info_stats.dart';
+import 'package:pokedex/widgets/pokemon_info_types.dart';
 
 class PokemonInfo extends StatelessWidget {
   const PokemonInfo({super.key});
@@ -23,7 +24,8 @@ class PokemonInfo extends StatelessWidget {
           children: [
             PokemonInfoHeader(pokemon: pokemon),
             PokemonInfoDetails(pokemon: pokemon),
-            PokemonInfoStats(pokemon: pokemon)
+            PokemonInfoStats(pokemon: pokemon),
+            PokemonInfoTypes(pokemon: pokemon)
           ],
         )));
   }
