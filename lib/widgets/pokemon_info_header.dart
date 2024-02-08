@@ -11,11 +11,21 @@ class PokemonInfoHeader extends StatelessWidget {
         color: Colors.green,
         padding: const EdgeInsets.all(20),
         alignment: Alignment.center,
-        child: Image(
-          image: NetworkImage(pokemon.sprites.frontDefault),
-          fit: BoxFit.fill,
-          height: 160,
-          width: 180,
-        ));
+        child: Column(children: [
+          Padding(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.height / 3.5),
+              child: IconButton(
+                  icon: const Icon(Icons.add_a_photo),
+                  color: Colors.white,
+                  iconSize: 50.0,
+                  onPressed: () {})),
+          Image(
+            image: NetworkImage(pokemon.sprites.frontDefault),
+            fit: BoxFit.fill,
+            height: 160,
+            width: 180,
+          )
+        ]));
   }
 }
