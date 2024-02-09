@@ -11,7 +11,7 @@ class PokemonTypeCard extends StatelessWidget {
     return Card(
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Image(
-            height: 50, width: 50, image: AssetImage("types/${type.name}.png")),
+            height: 50, width: 50, image: AssetImage("assets/types/${type.name}.png")),
         const SizedBox(width: 30, height: 150),
         Text(capitalize(type.name), style: const TextStyle(fontSize: 40))
       ]),
