@@ -8,16 +8,20 @@ class PokemonInfoTypes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 200,
-        child: ListView.separated(
-          padding: const EdgeInsets.all(8),
-          itemCount: pokemon.types.length,
-          itemBuilder: (context, index) {
-            return PokemonTypeCard(type: pokemon.types[index].type);
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(color: Colors.white),
-        ));
+    return Column(children: [
+      const Text("Types",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+      Container(
+          height: 200,
+          child: ListView.separated(
+            padding: const EdgeInsets.all(8),
+            itemCount: pokemon.types.length,
+            itemBuilder: (context, index) {
+              return PokemonTypeCard(type: pokemon.types[index].type);
+            },
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(color: Colors.white),
+          ))
+    ]);
   }
 }
