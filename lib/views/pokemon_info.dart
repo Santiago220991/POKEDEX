@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/model/pokemon.dart';
-import 'package:pokedex/providers/pokemon_data.dart';
 import 'package:pokedex/widgets/pokemon_info_details.dart';
 import 'package:pokedex/widgets/pokemon_info_header.dart';
 import 'package:pokedex/widgets/pokemon_info_slider.dart';
 import 'package:pokedex/widgets/pokemon_info_stats.dart';
 import 'package:pokedex/widgets/pokemon_info_types.dart';
-import 'package:provider/provider.dart';
 
 class PokemonInfo extends StatelessWidget {
   const PokemonInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final pokemon = arguments['pokemon'];
     final previousPath = arguments['previousPath'];
 
@@ -28,7 +26,7 @@ class PokemonInfo extends StatelessWidget {
         body: SingleChildScrollView(
             child: Column(
           children: [
-            previousPath=="pokemonList"
+            previousPath == "pokemonList"
                 ? PokemonInfoHeader(pokemon: pokemon)
                 : ImageSliderScreen(pokemon: pokemon),
             PokemonInfoDetails(pokemon: pokemon),

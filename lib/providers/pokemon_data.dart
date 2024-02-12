@@ -39,20 +39,19 @@ class PokemonData extends ChangeNotifier {
   }
 
   void setPokemonPicturesPaths(List<String> paths) {
-    _pokemonPicturesPaths=paths;
+    _pokemonPicturesPaths = paths;
   }
 
   void addPokemonPicturePath(String path) {
     _pokemonPicturesPaths.add(path);
     notifyListeners();
-    print("los paths añadidos: $_pokemonPicturesPaths");
   }
 
-  void getPokemonPicturePaths (String name){
-    readStoragePicturePaths(addPokemonPicturePath, name );
+  void getPokemonPicturePaths(String name) {
+    readStoragePicturePaths(addPokemonPicturePath, name);
   }
 
   List<Pokemon> get pokemonList => _pokemonList;
   List<Pokemon> get savedPokemonList => _pokemonSavedList;
-  List<String>  get pokemonPicturesPaths => _pokemonPicturesPaths; 
+  List<String> get pokemonPicturesPaths => _pokemonPicturesPaths;
 }

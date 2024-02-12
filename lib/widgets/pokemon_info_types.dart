@@ -11,7 +11,7 @@ class PokemonInfoTypes extends StatelessWidget {
     return Column(children: [
       const Text("Types",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-      Container(
+      SizedBox(
           height: 200,
           child: ListView.separated(
             padding: const EdgeInsets.all(8),

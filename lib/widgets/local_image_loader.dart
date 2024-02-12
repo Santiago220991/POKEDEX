@@ -12,7 +12,6 @@ class LocalImageLoader extends StatefulWidget {
 }
 
 class _LocalImageLoaderState extends State<LocalImageLoader> {
-
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
@@ -22,22 +21,23 @@ class _LocalImageLoaderState extends State<LocalImageLoader> {
         future: loadStoragedPicture(widget.picturePath),
         builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
           List<Widget> children;
-          if (snapshot.hasData) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            children = const <Widget>[
+              SizedBox(
+                width: 60,
+                height: 60,
+                child: CircularProgressIndicator(),
+              ),
+            ];
+          } else if (snapshot.hasData) {
             children = <Widget>[
               Image.file(
                 snapshot.data!,
-                width: 100,
-                height: 100,
+                height: 250,
+                width: MediaQuery.of(context).size.width - 40.0,
+                fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
               )
-            ];
-          } else if (snapshot.hasError) {
-            children = <Widget>[
-              const Icon(
-                Icons.error_outline,
-                color: Colors.red,
-                size: 60,
-              ),
             ];
           } else {
             children = const <Widget>[
@@ -48,7 +48,8 @@ class _LocalImageLoaderState extends State<LocalImageLoader> {
               ),
             ];
           }
-          return Center(
+          return Container(
+            color: Colors.green,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: children,

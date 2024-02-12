@@ -22,6 +22,5 @@ void takePokemonPicture({Pokemon? pokemon}) async {
     final bytes = await imageFile.readAsBytes();
 
     await File(destinationPath).writeAsBytes(bytes);
-    print('destinationPath: $destinationPath');
   }
 }

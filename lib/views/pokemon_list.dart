@@ -35,11 +35,16 @@ class PokemonListState extends State<PokemonList> {
           separatorBuilder: (BuildContext context, int index) =>
               const Divider(color: Colors.white),
         ),
-        ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, "/pictures");
-            },
-            child: const Text("My pokemons"))
+        Padding(
+            padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/pictures");
+                },
+                child: const Text(
+                  "My pokemons",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                )))
       ])),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
