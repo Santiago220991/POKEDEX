@@ -7,6 +7,8 @@ Future<void> requestCameraPermission({Pokemon? pokemon}) async {
   final status = await Permission.camera.request();
 
   if (status == PermissionStatus.granted) {
-      takePokemonPicture(pokemon:pokemon);   
-    }
+    takePokemonPicture(pokemon: pokemon);
+  } else {
+    await openAppSettings();
   }
+}
