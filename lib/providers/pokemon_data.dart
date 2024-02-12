@@ -33,9 +33,16 @@ class PokemonData extends ChangeNotifier {
   }
 
   void addPokemonToSavedList(String pokemonName) async {
-    var pokemon = await fetchPokemonByName(pokemonName);
-    _pokemonSavedList.add(pokemon);
-    notifyListeners();
+    List<Object> filteredList = _pokemonSavedList
+        .where((item) =>
+            item.name.toLowerCase().contains(pokemonName.toLowerCase()))
+        .toList();
+    if (filteredList.isEmpty) {
+      var pokemon = await fetchPokemonByName(pokemonName);
+      _pokemonSavedList.add(pokemon);
+      _pokemonSavedList.sort((a, b) => a.id.compareTo(b.id));
+      notifyListeners();
+    }
   }
 
   void setPokemonPicturesPaths(List<String> paths) {

@@ -19,8 +19,6 @@ class PokemonSavedListState extends State<PokemonSavedList> {
         title: const Text("My pokemons"),
       ),
       body: ListView.separated(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
         padding: const EdgeInsets.all(8),
         itemCount: pokemonProvider.savedPokemonList.length,
         itemBuilder: (context, index) {
