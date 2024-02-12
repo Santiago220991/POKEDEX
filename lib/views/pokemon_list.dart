@@ -20,15 +20,27 @@ class PokemonListState extends State<PokemonList> {
       appBar: AppBar(
         title: const Text("Pokemon List View"),
       ),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(8),
-        itemCount: pokemonProvider.pokemonList.length,
-        itemBuilder: (context, index) {
-          return PokemonCard(pokemon: pokemonProvider.pokemonList[index]);
-        },
-        separatorBuilder: (BuildContext context, int index) =>
-            const Divider(color: Colors.white),
-      ),
+      body: SingleChildScrollView(
+          child: Column(children: [
+        ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(8),
+          itemCount: pokemonProvider.pokemonList.length,
+          itemBuilder: (context, index) {
+            return PokemonCard(
+                pokemon: pokemonProvider.pokemonList[index],
+                previousPath: "pokemonList");
+          },
+          separatorBuilder: (BuildContext context, int index) =>
+              const Divider(color: Colors.white),
+        ),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "/pictures");
+            },
+            child: const Text("My pokemons"))
+      ])),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           pokemonProvider.setPokemonId(pokemonIdCounter + 1);

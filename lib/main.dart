@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/providers/pokemon_data.dart';
 import 'package:pokedex/views/pokemon_info.dart';
 import 'package:pokedex/views/pokemon_list.dart';
+import 'package:pokedex/views/pokemon_pictures.dart';
 import 'package:provider/provider.dart';
 import 'splash_screen.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
             "/splashScreen": (context) => const SplashScreen(),
             "/home": (context) => const PokemonList(),
             "/info": (context) => const PokemonInfo(),
+            "/pictures": (context) => const PokemonSavedList(),
           },
         ));
   }

@@ -23,6 +23,7 @@ class StartState extends State<SplashScreen> {
     super.initState();
     startTimer();
     Provider.of<PokemonData>(context, listen: false).getFirstPokemons();
+    Provider.of<PokemonData>(context, listen: false).getSavedPokemons();
   }
 
   startTimer() async {
